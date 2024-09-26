@@ -1,25 +1,3 @@
 **REGION Input Excel file
-Excel.LaunchExcel.LaunchAndOpenUnderExistingProcess Path: $'''C:\\Users\\atanu\\OneDrive\\Documents\\PowerAutomate\\RowSpliter\\data.xlsx''' Visible: False ReadOnly: False Instance=> ExcelInstance
-Excel.ReadFromExcel.ReadAllCells Instance: ExcelInstance ReadAsText: False FirstLineIsHeader: False RangeValue=> ExcelData
-**ENDREGION
-SET TotalRow TO ExcelData.RowsCount
-SET Total TO TotalRow / 3
+
 Variables.TruncateNumber.GetIntegerPart Number: Total Result=> RowNeeded
-SET CurrentRow TO 0
-Excel.LaunchExcel.LaunchUnderExistingProcess Visible: True Instance=> excel1
-Excel.LaunchExcel.LaunchUnderExistingProcess Visible: True Instance=> excel2
-Excel.LaunchExcel.LaunchUnderExistingProcess Visible: True Instance=> excel3
-LOOP FOREACH CurrentItem IN ExcelData
-    Excel.GetFirstFreeRowOnColumn Instance: excel1 Column: $'''A''' FirstFreeRowOnColumn=> Freerow
-    Excel.GetFirstFreeRowOnColumn Instance: excel2 Column: $'''A''' FirstFreeRowOnColumn=> Freerow2
-    Excel.GetFirstFreeRowOnColumn Instance: excel3 Column: $'''A''' FirstFreeRowOnColumn=> Freerow3
-    IF CurrentRow <= (RowNeeded - 1) THEN
-        Excel.WriteToExcel.WriteCell Instance: excel1 Value: CurrentItem Column: $'''A''' Row: Freerow
-    ELSE IF CurrentRow <= (RowNeeded * 2 - 1) THEN
-        Excel.WriteToExcel.WriteCell Instance: excel2 Value: CurrentItem Column: $'''A''' Row: Freerow2
-    ELSE IF CurrentRow <= TotalRow THEN
-        Excel.WriteToExcel.WriteCell Instance: excel3 Value: CurrentItem Column: $'''A''' Row: Freerow3
-    END
-    SET CurrentRow TO CurrentRow + 1
-END
-Excel.CloseExcel.Close Instance: ExcelInstance
