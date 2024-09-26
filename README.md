@@ -1,3 +1,3 @@
-**REGION Input Excel file
-
-Variables.TruncateNumber.GetIntegerPart Number: Total Result=> RowNeeded
+/# TODO : if 1 row
+delete old excels
+save new excels#/
