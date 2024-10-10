@@ -12,3 +12,42 @@ let previousDateFormatted =
 
 // Return or display the previous date
 console.log(previousDateFormatted); // Use MsgBox in PAD if needed
+
+
+
+
+
+
+// Get the current date
+let currentDate = new Date();
+
+// Subtract 2 days
+currentDate.setDate(currentDate.getDate() - 2);
+
+// Format the date in MM/DD/YYYY format
+let previousDateFormatted = 
+    ("0" + (currentDate.getMonth() + 1)).slice(-2) + "/" + 
+    ("0" + currentDate.getDate()).slice(-2) + "/" + 
+    currentDate.getFullYear();
+
+// Return or display the previous date
+console.log(previousDateFormatted); // Use MsgBox in PAD if needed
+
+
+
+
+// Get the current date
+let currentDate = new Date();
+
+// Subtract 3 days
+currentDate.setDate(currentDate.getDate() - 3);
+
+// Format the date in MM/DD/YYYY format
+let previousDateFormatted = 
+    ("0" + (currentDate.getMonth() + 1)).slice(-2) + "/" + 
+    ("0" + currentDate.getDate()).slice(-2) + "/" + 
+    currentDate.getFullYear();
+
+// Return or display the previous date
+console.log(previousDateFormatted); // Use MsgBox in PAD if needed
+
