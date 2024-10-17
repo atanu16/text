@@ -1,0 +1,41 @@
+Dim objExcel, objWorkbook, objSheet
+Dim filePath, startRow, endRow, startCol, endCol
+
+' Set the file path of the Excel file
+filePath = "C:\Path\To\Your\ExcelFile.xlsx"
+
+' Define the range to delete
+startRow = 2 ' Start row to delete
+endRow = 5   ' End row to delete
+startCol = 2 ' Start column to delete
+endCol = 4   ' End column to delete
+
+' Create an Excel application object
+Set objExcel = CreateObject("Excel.Application")
+objExcel.Visible = False ' Set to True if you want to see the Excel file opening
+
+' Open the Excel file
+Set objWorkbook = objExcel.Workbooks.Open(filePath)
+Set objSheet = objWorkbook.Sheets(1) ' You can specify the sheet name if needed
+
+' Delete rows
+If startRow <= endRow Then
+    objSheet.Rows(startRow & ":" & endRow).Delete
+End If
+
+' Delete columns
+If startCol <= endCol Then
+    objSheet.Columns(startCol & ":" & endCol).Delete
+End If
+
+' Save the changes and close the workbook
+objWorkbook.Save
+objWorkbook.Close
+
+' Quit Excel application
+objExcel.Quit
+
+' Clean up
+Set objSheet = Nothing
+Set objWorkbook = Nothing
+Set objExcel = Nothing
